@@ -12,4 +12,14 @@
         <item name="colorControlNormal">#FFF</item>
     </style>
 
+    <style name="TextListView">
+        <item name="android:paddingLeft">4px</item>
+        <item name="android:paddingBottom">4px</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:shadowColor">@color/colorAccent</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
 </resources>

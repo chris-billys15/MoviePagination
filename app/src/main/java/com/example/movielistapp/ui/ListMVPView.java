@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 public interface ListMVPView {
 
-    void onSucceedGetResult(ArrayList<Film> movies);
+    void onSucceedGetResult(ArrayList<Film> movies, int page);
 
     void viewToast(String message);
+
 }

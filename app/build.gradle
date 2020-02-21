@@ -55,4 +55,5 @@ dependencies {
     //adding view model
     implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.1.0"
+
 }

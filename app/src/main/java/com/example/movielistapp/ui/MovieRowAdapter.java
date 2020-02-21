@@ -1,5 +1,6 @@
 package com.example.movielistapp.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,15 +26,11 @@ public class MovieRowAdapter extends PagedListAdapter<Film, MovieRowAdapter.View
     private ItemClickListener mClickListener;
     private Context context;
     //data is passed into the constructor
-//    MovieRowAdapter(Context context, ArrayList<Film> data){
-//        this.context = context;
-//        this.mInflater = LayoutInflater.from(this.context);
-//        this.mData = data;
-//    }
 
     protected MovieRowAdapter(Context context, ArrayList<Film> data) {
         super(DIFF_CALLBACK);
         this.context = context;
+        this.mInflater = LayoutInflater.from(this.context);
         this.mData = data;
     }
 
@@ -69,6 +66,10 @@ public class MovieRowAdapter extends PagedListAdapter<Film, MovieRowAdapter.View
         notifyDataSetChanged();
     }
 
+    public void addList(ArrayList<Film> movies) {
+        mData.addAll(movies);
+        notifyDataSetChanged();
+    }
     private static DiffUtil.ItemCallback<Film> DIFF_CALLBACK =
             new DiffUtil.ItemCallback<Film>() {
                 @Override
@@ -76,6 +77,7 @@ public class MovieRowAdapter extends PagedListAdapter<Film, MovieRowAdapter.View
                     return oldItem.filmID == newItem.filmID;
                 }
 
+                @SuppressLint("DiffUtilEquals")
                 @Override
                 public boolean areContentsTheSame(@NonNull Film oldItem, @NonNull Film newItem) {
                     return oldItem.equals(newItem);
