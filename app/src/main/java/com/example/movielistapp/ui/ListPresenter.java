@@ -27,9 +27,8 @@ public class ListPresenter {
             @Override
             public void onResponse(Call<Film.ListFilm> call, Response<Film.ListFilm> response) {
                 if(response.code()==200 && response.body()!= null){
-                    mCurrentPage++;
                     ArrayList<Film> movies = response.body().movieList;
-                    mMvpView.onSucceedGetResult(movies,mCurrentPage-1); //setup RecyclerView
+                    mMvpView.onSucceedGetResult(movies,mCurrentPage); //setup RecyclerView
                 }
                 else{
                     mCurrentPage--;
@@ -40,6 +39,7 @@ public class ListPresenter {
             @Override
             public void onFailure(Call<Film.ListFilm> call, Throwable t) {
                 mMvpView.viewToast("error"); //show Toast
+                mCurrentPage--;
                 t.printStackTrace();
             }
         });

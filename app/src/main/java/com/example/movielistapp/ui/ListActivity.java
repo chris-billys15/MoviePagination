@@ -22,10 +22,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ListActivity extends AppCompatActivity implements ListMVPView, MovieRowAdapter.ItemClickListener{
-    private String TAG = "MainActivity";
 
     public final int PAGINATION_MARGIN = 2;
-    public final int PAGE_SIZE = 20;
     public final String LANG = "en-US";
     @BindView(R.id.listFilm)
     RecyclerView mRecyclerView;
@@ -53,8 +51,7 @@ public class ListActivity extends AppCompatActivity implements ListMVPView, Movi
                 int firstVisibleItemPosition = ((LinearLayoutManager) recyclerView.getLayoutManager()).findFirstVisibleItemPosition();
 
                 if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount - PAGINATION_MARGIN
-                        && firstVisibleItemPosition >= 0
-                        && totalItemCount >= PAGE_SIZE) {
+                        && firstVisibleItemPosition >= 0) {
                     mPresenter.getMovies(LANG);
                 }
             }
@@ -67,7 +64,7 @@ public class ListActivity extends AppCompatActivity implements ListMVPView, Movi
 
     @Override
     public void onItemClick(View view, int position) {
-        Log.d(TAG, "onItemClick: " + position);
+        Log.d("ListActivity", "onItemClick: " + position);
     }
 
     @Override
